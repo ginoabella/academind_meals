@@ -6,6 +6,11 @@ import 'package:meals/dummy_data.dart';
 class MealDetailScreen extends StatelessWidget {
   static const routedName = '/meal-details';
 
+  final Function toggleFavorite;
+  final Function isFavorite;
+
+  MealDetailScreen(this.toggleFavorite, this.isFavorite);
+
   // final String id;
 
   // MealDetailScreen(this.id);
@@ -41,6 +46,10 @@ class MealDetailScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => toggleFavorite(mealId),
+        child: Icon(isFavorite(mealId) ? Icons.star : Icons.star_border),
       ),
     );
   }
